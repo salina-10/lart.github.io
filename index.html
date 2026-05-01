@@ -842,7 +842,7 @@
             const el = document.getElementById(id);
             if(el) el.className = 'delivery-option';
         });
-        const zoneId = zone === 'Нарткала' ? 'nartkala' : zone === 'Кахун' ? 'kahun'  : zone === 'Нальчик' ? 'nalchik' : zone === 'Морзох' ? 'morzokh' : zone === 'Псынабо' ? 'psenabo' : zone === 'Псыкод' ? 'pseude' : zone === 'Псыкод' ? 'non';
+        const zoneId = zone === 'Нарткала' ? 'nartkala' : zone === 'Кахун' ? 'kahun'  : zone === 'Нальчик' ? 'nalchik' : zone === 'Морзох' ? 'morzokh' : zone === 'Псынабо' ? 'psenabo' : zone === 'Псыкод' ? 'pseude' : zone === 'Псыкод' : 'non';
         const activeZone = document.getElementById('opt-' + zoneId);
         if(activeZone) activeZone.className = 'delivery-option active';
         updateDeliveryPrice();
