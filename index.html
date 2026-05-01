@@ -838,7 +838,7 @@
     function selectZone(zone, price) {
         selectedZone = zone;
         zonePrice = price;
-        ['opt-nartkala', 'opt-kahun', 'opt-nalchik'].forEach(id => {
+        ['opt-nartkala', 'opt-kahun', 'opt-nalchik', 'opt-morzokh', 'opt-psenabo', 'opt-pseude', 'opt-non' ].forEach(id => {
             const el = document.getElementById(id);
             if(el) el.className = 'delivery-option';
         });
