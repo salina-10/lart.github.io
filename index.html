@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+    
     <style>
         :root {
             --sakura-soft: #dcafa2;
@@ -19,17 +19,8 @@
             --card-bg: rgba(255, 255, 255, 0.9);
         }
 
-        * {
-            box-sizing: border-box;
-            cursor: none;
-        }
-
-        /* Кнопки и ссылки получают обычный курсор */
-        button, a, .logo, .cart-btn-fixed, .add-btn-small, .btn-plus-card,
-        .delivery-option, .stock-toggle-btn, [onclick] {
-            cursor: pointer !important;
-        }
-
+        * { box-sizing: border-box; cursor: none; }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -41,8 +32,7 @@
 
         /* КУРСОР */
         #cursor {
-            width: 20px;
-            height: 20px;
+            width: 20px; height: 20px;
             background: var(--sakura-soft);
             border-radius: 50%;
             position: fixed;
@@ -70,6 +60,7 @@
             font-weight: 700;
             color: white;
             text-decoration: none;
+            cursor: pointer !important; /* Логотип теперь кнопка админа */
         }
 
         /* СТИЛИ ДЛЯ ОТСУТСТВИЯ ТОВАРА */
@@ -103,6 +94,7 @@
             border-radius: 10px;
             font-size: 10px;
             width: 100%;
+            cursor: pointer !important;
         }
 
         .cart-btn-fixed {
@@ -117,6 +109,7 @@
             font-weight: 700;
             color: var(--matcha-deep);
             display: none;
+            cursor: pointer !important;
             border: none;
         }
 
@@ -162,6 +155,7 @@
             padding: 10px;
             border: 2px solid var(--sakura-accent);
             border-radius: 15px;
+            cursor: pointer !important;
             text-align: center;
             transition: 0.2s;
         }
@@ -210,10 +204,6 @@
             overflow: hidden;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px) scale(1.02);
-        }
-
         .product-card img {
             width: 100%; height: 280px;
             object-fit: cover;
@@ -247,6 +237,7 @@
             padding: 12px 25px;
             border-radius: 20px;
             font-weight: 700;
+            cursor: pointer !important;
         }
 
         .menu-section {
@@ -286,6 +277,7 @@
             border-radius: 12px;
             font-weight: 700;
             font-size: 11px;
+            cursor: pointer !important;
             transition: 0.2s;
         }
 
@@ -317,6 +309,15 @@
             scrollbar-width: none;
         }
 
+        .review-card {
+            min-width: 280px;
+            background: #fcfcfc;
+            padding: 25px;
+            border-radius: 30px;
+            text-align: left;
+            border: 1px solid #eee;
+        }
+
         .map-section {
             padding: 80px 5%;
             text-align: center;
@@ -331,77 +332,83 @@
         }
 
         footer { padding: 40px; text-align: center; color: white; font-size: 12px; }
+        /* 📱 ПРОКАЧАННАЯ МОБИЛЬНАЯ ВЕРСИЯ */
+@media (max-width: 768px) {
 
-        /* МОБИЛЬНАЯ ВЕРСИЯ */
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 100px;
-            }
+    body {
+        padding-bottom: 100px; /* чтобы кнопка не перекрывала */
+    }
 
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                padding: 0 3%;
-            }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 3%;
+    }
 
-            .product-card {
-                padding: 10px;
-                border-radius: 22px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            }
+    .product-card {
+        padding: 10px;
+        border-radius: 22px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
 
-            .product-card img {
-                height: 140px;
-                border-radius: 18px;
-            }
+    .product-card img {
+        height: 140px;
+        border-radius: 18px;
+    }
 
-            .product-card h3 {
-                font-size: 13px;
-                margin: 5px 0;
-            }
+    .product-card h3 {
+        font-size: 13px;
+        margin: 5px 0;
+    }
+    .product-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    }
 
-            .btn-plus-card {
-                width: 100%;
-                padding: 10px;
-                font-size: 12px;
-                border-radius: 15px;
-            }
+    .btn-plus-card {
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+        border-radius: 15px;
+    }
 
-            .status-badge {
-                top: 10px;
-                left: 10px;
-                font-size: 8px;
-                padding: 4px 8px;
-            }
+    .status-badge {
+        top: 10px;
+        left: 10px;
+        font-size: 8px;
+        padding: 4px 8px;
+    }
 
-            .cart-btn-fixed {
-                left: 50%;
-                transform: translateX(-50%);
-                right: auto;
-                bottom: 20px;
-                width: 90%;
-                text-align: center;
-                border-radius: 20px;
-                padding: 16px;
-            }
+    /* 🔥 фикс кнопки заказа как в приложениях */
+    .cart-btn-fixed {
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        bottom: 20px;
+        width: 90%;
+        text-align: center;
+        border-radius: 20px;
+        padding: 16px;
+    }
 
-            .hero {
-                height: 80vh;
-            }
+    /* ✨ герой блок компактнее */
+    .hero {
+        height: 80vh;
+    }
 
-            .hero-content h1 {
-                font-size: 36px;
-            }
+    .hero-content h1 {
+        font-size: 36px;
+    }
 
-            .hero-image-wrap {
-                width: 250px;
-                height: 320px;
-            }
-        }
+    .hero-image-wrap {
+        width: 250px;
+        height: 320px;
+    }
+}
     </style>
 </head>
 <body id="mainBody">
-    <div id="cursor"></div>
+
+<div id="cursor"></div>
 
 <button class="cart-btn-fixed" id="cartBtn" onclick="openDeliveryModal()">
     <i class="fab fa-whatsapp"></i> ОФОРМИТЬ (<span id="cartCount">0</span>)
@@ -412,14 +419,14 @@
         <h3 id="extra-title" style="font-family: 'Playfair Display'; margin-top: 0;">Добавки к напитку</h3>
         <p style="font-size: 12px; color: #888; margin-bottom: 20px;">Что добавим в этот напиток?</p>
         <div class="extra-grid">
-            <button class="add-btn-small" onclick="addModifier('Кокосовое молоко (+70₽)')">Кокосовое (+70)</button>
-            <button class="add-btn-small" onclick="addModifier('Миндальное молоко (+70₽)')">Миндальное (+70)</button>
-            <button class="add-btn-small" onclick="addModifier('Овсяное молоко (+70₽)')">Овсяное (+70)</button>
-            <button class="add-btn-small" onclick="addModifier('Безлактозное молоко (+50₽)')">Безлактозное (+50)</button>
-            <button class="add-btn-small" onclick="addModifier('Сироп Карамель (+40₽)')">Сироп Карамель (+40)</button>
-            <button class="add-btn-small" onclick="addModifier('Сироп Ваниль (+40₽)')">Сироп Ваниль (+40)</button>
-            <button class="add-btn-small" onclick="addModifier('Сироп Лесной орех (+40₽)')">Сироп Орех (+40)</button>
-            <button class="add-btn-small" onclick="addModifier('Маршмеллоу (+40₽)')">Маршмеллоу (+40)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Кокосовое молоко (+70₽)')">Кокосовое (+70)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Миндальное молоко (+70₽)')">Миндальное (+70)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Овсяное молоко (+70₽)')">Овсяное (+70)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Безлактозное молоко (+50₽)')">Безлактозное (+50)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Сироп Карамель (+40₽)')">Сироп Карамель (+40)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Сироп Ваниль (+40₽)')">Сироп Ваниль (+40)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Сироп Лесной орех (+40₽)')">Сироп Орех (+40)</button>
+            <button class="add-btn-small" onclick="addModifier(' + Маршмеллоу (+40₽)')">Маршмеллоу (+40)</button>
         </div>
         <button style="width: 100%; padding: 15px; border-radius: 20px; border: none; background: var(--matcha-deep); color: white; font-weight: 700; cursor: pointer !important;" onclick="closeExtraModal()">ГОТОВО / БЕЗ ДОБАВОК</button>
     </div>
@@ -429,7 +436,7 @@
     <div class="modal-content">
         <h3 style="font-family: 'Playfair Display'; text-align: center;">Ваш заказ</h3>
         <div id="cart-items-list" style="text-align: left; margin-bottom: 20px; font-size: 13px; border-bottom: 1px solid #eee; padding-bottom: 10px;"></div>
-
+        
         <label style="display: block; font-size: 11px; font-weight: 700; text-align: left; color: var(--matcha-deep); margin-bottom: 10px;">СПОСОБ ПОЛУЧЕНИЯ</label>
         <div style="display: flex; gap: 10px; margin-bottom: 20px;">
             <div class="delivery-option active" id="method-pickup" style="flex: 1; margin: 0;" onclick="setMethod('pickup')">Заберу сам / В зале</div>
@@ -469,7 +476,7 @@
 </header>
 
 <section class="hero">
-    <div class="hero-image-wrap" id="parallax-img"><img src="IMG_4615.jpg" alt="Hero"></div>
+    <div class="hero-image-wrap" id="parallax-img"><img src="../IMG_4615.jpg"></div>
     <div class="hero-content" data-aos="zoom-out">
         <p style="color: white; letter-spacing: 5px; font-size: 12px;">EST. 2026</p>
         <h1>Сладость <br>как <i>Искусство</i></h1>
@@ -482,150 +489,147 @@
         <h2>Витрина десертов</h2>
         <p>Свежее наличие на сегодня</p>
     </div>
+
     <div class="products-grid">
-    <div class="product-card" id="item1" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4619.jpg" alt="Тарт"><h3>Тарт Голубика-Малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Голубика-Малина (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item1')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item2" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4639.jpg" alt="Тарт"><h3>Тарт Фисташка-малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фисташка-малина (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item2')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item3" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4642.jpg" alt="Тарт"><h3>Тарт Фундук-карамель</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фундук-карамель (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item3')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item4" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4640.jpg" alt="Тарт"><h3>Тарт Сникерс</h3><button class="btn-plus-card" onclick="addToCart('Тарт Сникерс (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item4')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item5" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4641.jpg" alt="Тарт"><h3>Тарт Лимон-вишня</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item5')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item6" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-03.jpg" alt="Тарт"><h3>Тарт Груша-миндаль</h3><button class="btn-plus-card" onclick="addToCart('Тарт Груша-миндаль (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item6')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item7" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-51-46.jpg" alt="Тарт"><h3>Тарт Клубника-базилик</h3><button class="btn-plus-card" onclick="addToCart('Тарт Клубника-базилик (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item7')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item8" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4644.jpg" alt="Тарт"><h3>Тарт Карамель-пекан</h3><button class="btn-plus-card" onclick="addToCart('Тарт Карамель-пекан (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item8')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item9" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4646.jpg" alt="Тарт"><h3>Тарт Шоколад-малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Шоколад-малина (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item9')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item10" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-10 01.08.37.jpeg" alt="Тарт"><h3>Тарт Лимонная меренга</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимонная меренга (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item10')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item11" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-10 01.08.59.jpeg" alt="Тарт"><h3>Тарт Фисташка-шоколад</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фисташка-шоколад (280₽)', event)">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item11')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item12" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-07.jpg" alt="Блонди"><h3>Блонди</h3><button class="btn-plus-card" onclick="addToCart('Блонди (190₽)', event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item12')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item13" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-05.jpg" alt="Сан-Себастьян"><h3>Сан-Себастьян Классик</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Классик (270₽)', event)">270₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item13')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item14" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-02.jpg" alt="Сан-Себастьян"><h3>Сан-Себастьян Фисташка</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Фисташка (290₽)', event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item14')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item15" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4620%2013.55.03.jpg" alt="Гранат"><h3>Гранат в шоколаде</h3><button class="btn-plus-card" onclick="addToCart('Гранат в шоколаде (250₽)', event)">250₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item15')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item16" data-aos="fade-up"><div class="status-badge bakery">Выпечка</div><img src="photo_2026-04-10 01.09.06.jpeg" alt="Круассан"><h3>Круассан с шоколадом</h3><button class="btn-plus-card" onclick="addToCart('Круассан с шоколадом (180₽)', event)">180₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item16')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item17" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="IMG_4621.jpg" alt="Бенто"><h3>Бенто-Торт Медовик</h3><button class="btn-plus-card" onclick="addToCart('Бенто Медовик (900₽)', event)">900₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item17')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item18" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="IMG_4638.jpg" alt="Анна Павлова"><h3>Анна Павлова</h3><button class="btn-plus-card" onclick="addToCart('Анна Павлова (300₽)', event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item18')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item19" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="photo_2026-04-12_16-52-11.jpg" alt="Тирамису"><h3>Тирамису</h3><button class="btn-plus-card" onclick="addToCart('Тирамису (300₽)', event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item19')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item20" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="photo_2026-04-12_16-52-01.jpg" alt="Профитроли"><h3>Профитроли</h3><button class="btn-plus-card" onclick="addToCart('Профитроли (190₽)', event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item20')">Изменить наличие</button></div></div>
-</div>
-</div>
-</section>
+        <div class="product-card" id="item1" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4619.jpg"><h3>Тарт Голубика-Малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Голубика-Малина (280₽)')">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item1')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item2" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4639.jpg"><h3>Тарт Фисташка-малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фисташка-малина (280₽)')">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item2')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item3" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4642.jpg"><h3>Тарт Фундук-карамель</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фундук-карамель (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item3')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item4" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4640.jpg"><h3>Тарт Сникерс</h3><button class="btn-plus-card" onclick="addToCart('Тарт Сникерс (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item4')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item5" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4641.jpg"><h3>Тарт Лимон-вишня</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item5')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item6" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-12_16-52-03.jpg"><h3>Тарт Груша-миндаль</h3><button class="btn-plus-card" onclick="addToCart('Тарт Груша-миндаль (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item6')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item7" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-12_16-51-46.jpg"><h3>Тарт </h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item7')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item8" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4644.jpg"><h3>Тарт </h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item8')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item9" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4646.jpg"><h3>Тарт </h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item9')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item10" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-10%2001.08.37.jpeg"><h3>Тарт Лимонная меренга</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимонная меренга (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item10')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item11" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-10%2001.08.59.jpeg"><h3>Тарт Фисташка-шоколад</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фисташка-шоколад (280₽)')">280₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item11')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item12" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-12_16-52-07.jpg"><h3>Блонди</h3><button class="btn-plus-card" onclick="addToCart('Блонди (250₽)')">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item12')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item13" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-12_16-52-05.jpg"><h3>Сан-Себастьян Классик</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Классик (250₽)')">270₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item13')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item14" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../photo_2026-04-12_16-52-02.jpg"><h3>Сан-Себастьян Фисташка</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Фисташка (290₽)')">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item14')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item15" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="../IMG_4620%2013.55.03.jpg"><h3>Гранат в шоколаде</h3><button class="btn-plus-card" onclick="addToCart('Гранат в шоколаде (250₽)')">250₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item15')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item16" data-aos="fade-up"><div class="status-badge bakery">Выпечка</div><img src="../photo_2026-04-10%2001.09.06.jpeg"><h3>Круассан с шоколадом</h3><button class="btn-plus-card" onclick="addToCart('Круассан с шоколадом (180₽)')">180₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item16')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item17" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="../IMG_4621.jpg"><h3>Бенто-Торт Медовик</h3><button class="btn-plus-card" onclick="addToCart('Бенто-Торт Медовик (370₽)')">370₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item17')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item18" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="../IMG_4638.jpg"><h3>Анна Павлова</h3><button class="btn-plus-card" onclick="addToCart('Анна Павлова (300₽)')">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item18')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item19" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="../photo_2026-04-12_16-52-11.jpg"><h3>Тирамису</h3><button class="btn-plus-card" onclick="addToCart('Тирамису (300₽)')">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item19')">Изменить наличие</button></div></div>
+        <div class="product-card" id="item20" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="../photo_2026-04-12_16-52-01.jpg"><h3>Профитроли</h3><button class="btn-plus-card" onclick="addToCart('Профитроли (300₽)')">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item20')">Изменить наличие</button></div></div>
+    </div>
+    </div>
+</section> 
 
 <section class="menu-section" data-aos="fade-up">
     <h2 style="text-align: center; color: var(--matcha-deep); font-family: 'Playfair Display'; margin-bottom: 40px;">Меню напитков</h2>
-
+    
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
         <div>
             <div class="menu-cat-title"><i class="fas fa-coffee"></i> Кофе классика</div>
-            <div class="menu-item"><span>Эспрессо</span><button class="add-btn-small" onclick="addToCart('Эспрессо (150₽)', event)">150₽</button></div>
-            <div class="menu-item"><span>Лунго</span><button class="add-btn-small" onclick="addToCart('Лунго (150₽)', event)">150₽</button></div>
-            <div class="menu-item"><span>Американо</span><button class="add-btn-small" onclick="addToCart('Американо (150₽)', event)">150₽</button></div>
-            <div class="menu-item"><span>Капучино 300мл</span><button class="add-btn-small" onclick="addToCart('Капучино 300мл (180₽)', event)">180₽</button></div>
-            <div class="menu-item"><span>Капучино 400мл</span><button class="add-btn-small" onclick="addToCart('Капучино 400мл (200₽)', event)">200₽</button></div>
-            <div class="menu-item"><span>Латте</span><button class="add-btn-small" onclick="addToCart('Латте (220₽)', event)">220₽</button></div>
-            <div class="menu-item"><span>Флэт-уайт</span><button class="add-btn-small" onclick="addToCart('Флэт-уайт (180₽)', event)">180₽</button></div>
+            <div class="menu-item"><span>Эспрессо</span><button class="add-btn-small" onclick="addToCart('Эспрессо (150₽)')">150₽</button></div>
+            <div class="menu-item"><span>Лунго</span><button class="add-btn-small" onclick="addToCart('Лунго (150₽)')">150₽</button></div>
+            <div class="menu-item"><span>Американо</span><button class="add-btn-small" onclick="addToCart('Американо (150₽)')">150₽</button></div>
+            <div class="menu-item"><span>Капучино 300мл</span><button class="add-btn-small" onclick="addToCart('Капучино 300мл (180₽)')">180₽</button></div>
+            <div class="menu-item"><span>Капучино 400мл</span><button class="add-btn-small" onclick="addToCart('Капучино 400мл (200₽)')">200₽</button></div>
+            <div class="menu-item"><span>Латте</span><button class="add-btn-small" onclick="addToCart('Латте (220₽)')">220₽</button></div>
+            <div class="menu-item"><span>Флэт-уайт</span><button class="add-btn-small" onclick="addToCart('Флэт-уайт (180₽)')">180₽</button></div>
 
             <div class="menu-cat-title" style="background: #fdf2f4; border-radius: 10px; padding: 5px; margin-top:30px;">Авторский Раф</div>
-            <div class="menu-item"><span>Раф Халва</span><button class="add-btn-small" onclick="addToCart('Раф Халва (280₽)', event)">280₽</button></div>
-            <div class="menu-item"><span>Раф Малина</span><button class="add-btn-small" onclick="addToCart('Раф Малина (280₽)', event)">280₽</button></div>
-            <div class="menu-item"><span>Раф Пломбир</span><button class="add-btn-small" onclick="addToCart('Раф Пломбир (280₽)', event)">280₽</button></div>
-            <div class="menu-item"><span>Раф Цитрус</span><button class="add-btn-small" onclick="addToCart('Раф Цитрус (280₽)', event)">280₽</button></div>
-            <div class="menu-cat-title" style="background: #fdf2f4; border-radius: 10px; padding: 5px;">Авторский Латте</div>
-            <div class="menu-item"><span>Латте Сникерс</span><button class="add-btn-small" onclick="addToCart('Латте Сникерс (270₽)', event)">270₽</button></div>
-            <div class="menu-item"><span>Латте Малина-Фисташка</span><button class="add-btn-small" onclick="addToCart('Латте Малина-Фисташка (270₽)', event)">270₽</button></div>
-            <div class="menu-item"><span>Латте Соленая карамель</span><button class="add-btn-small" onclick="addToCart('Латте Сол. карамель (270₽)', event)">270₽</button></div>
+            <div class="menu-item"><span>Раф Халва</span><button class="add-btn-small" onclick="addToCart('Раф Халва (280₽)')">280₽</button></div>
+            <div class="menu-item"><span>Раф Малина</span><button class="add-btn-small" onclick="addToCart('Раф Малина (280₽)')">280₽</button></div>
+            <div class="menu-item"><span>Раф Пломбир</span><button class="add-btn-small" onclick="addToCart('Раф Пломбир (280₽)')">280₽</button></div>
+            <div class="menu-item"><span>Раф Цитрус</span><button class="add-btn-small" onclick="addToCart('Раф Цитрус (280₽)')">280₽</button></div>
         </div>
 
+        <div>
+            <div class="menu-cat-title" style="background: #fdf2f4; border-radius: 10px; padding: 5px;">Авторский Латте</div>
+            <div class="menu-item"><span>Латте Сникерс</span><button class="add-btn-small" onclick="addToCart('Латте Сникерс (270₽)')">270₽</button></div>
+            <div class="menu-item"><span>Латте Малина-Фисташка</span><button class="add-btn-small" onclick="addToCart('Латте Малина-Фисташка (270₽)')">270₽</button></div>
+            <div class="menu-item"><span>Латте Соленая карамель</span><button class="add-btn-small" onclick="addToCart('Латте Сол. карамель (270₽)')">270₽</button></div>
+
+            <div class="menu-cat-title" style="margin-top:30px;"><i class="fas fa-leaf"></i> Авторский Чай</div>
+            <div class="menu-item"><span>Облепиха-апельсин 300мл</span><button class="add-btn-small" onclick="addToCart('Чай Облепиха 300мл (150₽)')">150₽</button></div>
+            <div class="menu-item"><span>Облепиха-апельсин 600мл</span><button class="add-btn-small" onclick="addToCart('Чай Облепиха 600мл (300₽)')">300₽</button></div>
+            <div class="menu-item"><span>Гранат-смородина 300мл</span><button class="add-btn-small" onclick="addToCart('Чай Гранат 300мл (150₽)')">150₽</button></div>
+            <div class="menu-item"><span>Гранат-смородина 600мл</span><button class="add-btn-small" onclick="addToCart('Чай Гранат 600мл (300₽)')">300₽</button></div>
+            <div class="menu-item"><span>Киви-яблоко 300мл</span><button class="add-btn-small" onclick="addToCart('Чай Киви 300мл (150₽)')">150₽</button></div>
+            <div class="menu-item"><span>Киви-яблоко 600мл</span><button class="add-btn-small" onclick="addToCart('Чай Киви 600мл (300₽)')">300₽</button></div>
+        </div>
 
         <div>
             <div class="menu-cat-title"><i class="fas fa-snowflake"></i> Лимонады & Айс</div>
-            <div class="menu-item"><span>Лимонад Киви-яблоко</span><button class="add-btn-small" onclick="addToCart('Лимонад Киви (250₽)', event)">250₽</button></div>
-            <div class="menu-item"><span>Лимонад Голубая Лагуна</span><button class="add-btn-small" onclick="addToCart('Лимонад Лагуна (250₽)', event)">250₽</button></div>
-            <div class="menu-item"><span>Лимонад Манго-маракуйя</span><button class="add-btn-small" onclick="addToCart('Лимонад Манго (250₽)', event)">250₽</button></div>
-            <div class="menu-item"><span>Лимонад Ягодный</span><button class="add-btn-small" onclick="addToCart('Лимонад Ягодный (250₽)', event)">250₽</button></div>
-            <div class="menu-item"><span>Бамбл кофе</span><button class="add-btn-small" onclick="addToCart('Бамбл кофе (250₽)', event)">250₽</button></div>
-            <div class="menu-item"><span>Айс-Латте</span><button class="add-btn-small" onclick="addToCart('Айс-Латте (250₽)', event)">250₽</button></div>
+            <div class="menu-item"><span>Лимонад Киви-яблоко</span><button class="add-btn-small" onclick="addToCart('Лимонад Киви (250₽)')">250₽</button></div>
+            <div class="menu-item"><span>Лимонад Голубая Лагуна</span><button class="add-btn-small" onclick="addToCart('Лимонад Лагуна (250₽)')">250₽</button></div>
+            <div class="menu-item"><span>Лимонад Манго-маракуйя</span><button class="add-btn-small" onclick="addToCart('Лимонад Манго (250₽)')">250₽</button></div>
+            <div class="menu-item"><span>Лимонад Ягодный</span><button class="add-btn-small" onclick="addToCart('Лимонад Ягодный (250₽)')">250₽</button></div>
+            <div class="menu-item"><span>Бамбл кофе</span><button class="add-btn-small" onclick="addToCart('Бамбл кофе (250₽)')">250₽</button></div>
+            <div class="menu-item"><span>Айс-Латте</span><button class="add-btn-small" onclick="addToCart('Айс-Латте (250₽)')">250₽</button></div>
 
             <div class="menu-cat-title" style="margin-top:30px;"><i class="fas fa-ice-cream"></i> Милк-шейки</div>
-            <div class="menu-item"><span>Шейк Ванильный</span><button class="add-btn-small" onclick="addToCart('Милкшейк Ваниль (200₽)', event)">200₽</button></div>
-            <div class="menu-item"><span>Шейк Клубничный</span><button class="add-btn-small" onclick="addToCart('Милкшейк Клубника (200₽)', event)">200₽</button></div>
-            <div class="menu-item"><span>Шейк Шоколадный</span><button class="add-btn-small" onclick="addToCart('Милкшейк Шоколад (200₽)', event)">200₽</button></div>
-            <div class="menu-item"><span>Oreo Шейк</span><button class="add-btn-small" onclick="addToCart('Милкшейк Oreo (250₽)', event)">250₽</button></div>
-       <div class="menu-cat-title" style="margin-top:30px;"><i class="fas fa-leaf"></i> Авторский Чай</div>
-            <div class="menu-item"><span>Облепиха-апельсин 300мл</span><button class="add-btn-small" onclick="addToCart('Чай Облепиха 300мл (150₽)', event)">150₽</button></div>
-            <div class="menu-item"><span>Облепиха-апельсин 600мл</span><button class="add-btn-small" onclick="addToCart('Чай Облепиха 600мл (300₽)', event)">300₽</button></div>
-            <div class="menu-item"><span>Гранат-смородина 300мл</span><button class="add-btn-small" onclick="addToCart('Чай Гранат 300мл (150₽)', event)">150₽</button></div>
-            <div class="menu-item"><span>Гранат-смородина 600мл</span><button class="add-btn-small" onclick="addToCart('Чай Гранат 600мл (300₽)', event)">300₽</button></div>
-            <div class="menu-item"><span>Киви-яблоко 300мл</span><button class="add-btn-small" onclick="addToCart('Чай Киви 300мл (150₽)', event)">150₽</button></div>
-            <div class="menu-item"><span>Киви-яблоко 600мл</span><button class="add-btn-small" onclick="addToCart('Чай Киви 600мл (300₽)', event)">300₽</button></div>
+            <div class="menu-item"><span>Шейк Ванильный</span><button class="add-btn-small" onclick="addToCart('Милкшейк Ваниль (200₽)')">200₽</button></div>
+            <div class="menu-item"><span>Шейк Клубничный</span><button class="add-btn-small" onclick="addToCart('Милкшейк Клубника (200₽)')">200₽</button></div>
+            <div class="menu-item"><span>Шейк Шоколадный</span><button class="add-btn-small" onclick="addToCart('Милкшейк Шоколад (200₽)')">200₽</button></div>
+            <div class="menu-item"><span>Oreo Шейк</span><button class="add-btn-small" onclick="addToCart('Милкшейк Oreo (250₽)')">250₽</button></div>
         </div>
     </div>
-<!-- ВОТ ТУДА (перед menu-section) -->
-
-<!-- ДЕКОРАТИВНАЯ НАДПИСЬ НАД МЕНЮ НАПИТКОВ -->
-<div style="text-align: center; margin: 40px auto 20px auto;" data-aos="fade-up">
-    <div style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; font-style: italic; color: #b0988a; letter-spacing: 3px; display: flex; align-items: center; justify-content: center; gap: 15px;">
-        <span style="font-size: 20px;">✨</span>
-        <span>Sparkling Chupa Chups</span>
-        <span style="font-size: 20px;">✨</span>
-    </div>
-    <div style="width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #dcafa2, transparent); margin: 12px auto 0 auto;"></div>
-</div>
-
-<div class="products-grid" style="margin-top: 30px;">
-    <div class="product-card" id="item21" data-aos="fade-up">
-        <div class="status-badge in-stock">В наличии</div>
-        <img src="WhatsApp Image 2026-04-28 at 11.53.29.jpeg" alt="Blue Velvet Cream">
-        <h3>Blue Velvet Cream</h3>
-        <button class="btn-plus-card" onclick="addToCart('Blue Velvet Cream (290₽)', event)">290₽</button>
-        <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item21')">Изменить наличие</button></div>
-    </div>
-
-    <div class="product-card" id="item22" data-aos="fade-up">
-        <div class="status-badge in-stock">В наличии</div>
-        <img src="WhatsApp Image 2026-04-28 at 11.35.53 (1).jpeg" alt="Green Apple Cloud">
-        <h3>Green Apple Cloud</h3>
-        <button class="btn-plus-card" onclick="addToCart('Green Apple Cloud (290₽)', event)">290₽</button>
-        <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item22')">Изменить наличие</button></div>
-    </div>
-
-    <div class="product-card" id="item23" data-aos="fade-up">
-        <div class="status-badge in-stock">В наличии</div>
-        <img src="WhatsApp Image 2026-04-28 at 11.42.24.jpeg" alt="Melon Breeze Cream">
-        <h3>Melon Breeze Cream</h3>
-        <button class="btn-plus-card" onclick="addToCart('Melon Breeze Cream (290₽)', event)">290₽</button>
-        <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item23')">Изменить наличие</button></div>
-    </div>
-
-    <div class="product-card" id="item24" data-aos="fade-up">
-        <div class="status-badge in-stock">В наличии</div>
-        <img src="WhatsApp Image 2026-04-28 at 11.35.53.jpeg" alt="Strawberry Sakura Cream">
-        <h3>Strawberry Sakura Cream</h3>
-        <button class="btn-plus-card" onclick="addToCart('Strawberry Sakura Cream (290₽)', event)">290₽</button>
-        <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item24')">Изменить наличие</button></div>
-    </div>
-</div>
 </section>
 
 <section class="map-section" data-aos="fade-up">
     <h2 style="font-family: 'Playfair Display'; color: var(--matcha-deep);">Ждем вас в гости</h2>
     <p style="font-size: 14px; margin-bottom: 10px;">Нарткала, ул. Кандохова, 130</p>
     <div class="map-container">
-        <iframe src="https://yandex.ru/map-widget/v1/?ll=43.855017%2C43.554341&mode=search&oid=48411874993&ol=biz&z=17" width="100%" height="100%" frameborder="0" title="Карта L'Art Desserts"></iframe>
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=43.855017%2C43.554341&mode=search&oid=48411874993&ol=biz&z=17" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 </section>
 
 <section class="reviews-section" data-aos="fade-up" style="padding:90px 5%; text-align:center; background:#fff;">
+
     <div style="max-width:900px; margin:0 auto;">
-        <div style="display:inline-flex; align-items:center; gap:12px; padding:10px 18px; border-radius:999px; background:#f7f7f7; font-size:12px; color:#333; margin-bottom:35px; letter-spacing:1px;">
+
+        <!-- бейдж -->
+        <div style="
+            display:inline-flex;
+            align-items:center;
+            gap:12px;
+            padding:10px 18px;
+            border-radius:999px;
+            background:#f7f7f7;
+            font-size:12px;
+            color:#333;
+            margin-bottom:35px;
+            letter-spacing:1px;
+        ">
             <span style="font-weight:600;">ХОРОШЕЕ МЕСТО 2026</span>
             <span style="color:#b38b00;">★★★★★ 5.0</span>
         </div>
 
-        <h2 style="font-family:'Playfair Display', serif; font-size:34px; margin:0 0 10px; color:#111;">
+        <!-- заголовок -->
+        <h2 style="
+            font-family:'Playfair Display', serif;
+            font-size:34px;
+            margin:0 0 10px;
+            color:#111;
+        ">
             Отзывы гостей
         </h2>
 
-        <p style="font-size:13px; color:#888; margin-bottom:50px;"></p>
+        <p style="
+            font-size:13px;
+            color:#888;
+            margin-bottom:50px;
+        ">
+            
+        </p>
 
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:25px; text-align:left;">
-            <div style="padding:25px; border-radius:16px; background:#fafafa; border:1px solid #eee;">
+        <!-- отзывы -->
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+            gap:25px;
+            text-align:left;
+        ">
+
+            <div style="
+                padding:25px;
+                border-radius:16px;
+                background:#fafafa;
+                border:1px solid #eee;
+            ">
                 <div style="font-weight:600; margin-bottom:6px;">Марианна Иванова</div>
                 <div style="font-size:12px; color:#b38b00; margin-bottom:10px;">★★★★★</div>
                 <p style="font-size:13px; color:#555; line-height:1.6; margin:0;">
@@ -633,28 +637,43 @@
                 </p>
             </div>
 
-            <div style="padding:25px; border-radius:16px; background:#fafafa; border:1px solid #eee;">
+            <div style="
+                padding:25px;
+                border-radius:16px;
+                background:#fafafa;
+                border:1px solid #eee;
+            ">
                 <div style="font-weight:600; margin-bottom:6px;">Лариса Дмитриева</div>
                 <div style="font-size:12px; color:#b38b00; margin-bottom:10px;">★★★★★</div>
                 <p style="font-size:13px; color:#555; line-height:1.6; margin:0;">
                     Тарты с голубикой — баланс вкуса, который сложно забыть.
                 </p>
             </div>
+
         </div>
 
+        <!-- кнопка -->
         <a href="https://yandex.ru/maps/org/l_art_desserts_boutique/48411874993/reviews/"
            target="_blank"
-           style="display:inline-block; margin-top:45px; padding:14px 34px; border-radius:999px; background:#111; color:#fff; text-decoration:none; font-size:12px; letter-spacing:1px; font-weight:600;">
+           style="
+                display:inline-block;
+                margin-top:45px;
+                padding:14px 34px;
+                border-radius:999px;
+                background:#111;
+                color:#fff;
+                text-decoration:none;
+                font-size:12px;
+                letter-spacing:1px;
+                font-weight:600;
+           ">
             ВСЕ ОТЗЫВЫ
         </a>
-    </div>
-</section>
 
-<footer style="text-align:center; padding:25px 0;">
-    <span style="font-family: 'Cormorant', serif; font-size:15px; color:#ffffff; font-style: italic; font-weight: 600; letter-spacing:0.5px; opacity:0.9;">
-        made by SALINA
-    </span>
-</footer>
+    </div>
+
+</section>
+<footer><p>L'ART DESSERTS © 2026 | Нарткала, ул. Кандохова, 130</p></footer>
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
@@ -671,10 +690,8 @@
 
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
-        if(cursor) {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        }
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
     });
 
     // ФУНКЦИИ АДМИНКИ
@@ -682,122 +699,93 @@
         const p = prompt("Введите пароль для управления сайтом:");
         if(p === ADMIN_PASS) {
             document.body.classList.toggle('edit-mode');
-        } else if(p !== null) {
-            alert("Неверный пароль");
-        }
+        } else if(p !== null) { alert("Неверный пароль"); }
     }
 
     function toggleStock(id) {
         const card = document.getElementById(id);
-        if(!card) return;
         const badge = card.querySelector('.status-badge');
         if(card.classList.contains('out-of-stock')) {
             card.classList.remove('out-of-stock');
-            if(badge) badge.innerText = "В наличии";
+            badge.innerText = "В наличии";
             localStorage.setItem('stock_' + id, 'in');
         } else {
             card.classList.add('out-of-stock');
-            if(badge) badge.innerText = "Нет в наличии";
+            badge.innerText = "Нет в наличии";
             localStorage.setItem('stock_' + id, 'out');
         }
     }
 
     // ЗАГРУЗКА СОСТОЯНИЯ
-    window.addEventListener('DOMContentLoaded', () => {
+    window.onload = () => {
         document.querySelectorAll('.product-card').forEach(card => {
-            if(card.id && localStorage.getItem('stock_' + card.id) === 'out') {
+            if(localStorage.getItem('stock_' + card.id) === 'out') {
                 card.classList.add('out-of-stock');
-                const badge = card.querySelector('.status-badge');
-                if(badge) badge.innerText = "Нет в наличии";
+                card.querySelector('.status-badge').innerText = "Нет в наличии";
             }
         });
-    });
+    };
 
     function parsePrice(str) {
         const match = str.match(/(\d+)(?=₽)/);
         return match ? parseInt(match[1]) : 0;
     }
 
-    // ИСПРАВЛЕННАЯ ФУНКЦИЯ addToCart
-    function addToCart(itemName, event) {
-        const card = event?.target?.closest('.product-card');
-        if(card && card.classList.contains('out-of-stock')) {
-            alert("Этот товар временно недоступен");
-            return;
-        }
+    function addToCart(itemName) {
+        const card = event.target.closest('.product-card');
+        if(card && card.classList.contains('out-of-stock')) return;
 
         cart.push({ name: itemName, extras: [] });
         currentItemIndex = cart.length - 1;
-
-        const isDrink = event?.target?.closest('.menu-section') !== null;
-        if (isDrink) {
-            openExtraModal(itemName);
-        }
+        const isDrink = event.target.closest('.menu-section') !== null;
+        if (isDrink) { openExtraModal(itemName); }
         updateCart();
     }
 
     function openExtraModal(name) {
-        const titleElem = document.getElementById('extra-title');
-        if(titleElem) {
-            titleElem.innerText = "Добавки для: " + name.split(' (')[0];
-        }
-        const modal = document.getElementById('extra-modal');
-        if(modal) modal.style.display = 'flex';
+        document.getElementById('extra-title').innerText = "Добавки для: " + name.split(' (')[0];
+        document.getElementById('extra-modal').style.display = 'flex';
     }
 
     function addModifier(modName) {
-        if (currentItemIndex !== null && cart[currentItemIndex]) {
+        if (currentItemIndex !== null) {
             cart[currentItemIndex].extras.push(modName);
             updateCart();
         }
     }
 
     function closeExtraModal() {
-        const modal = document.getElementById('extra-modal');
-        if(modal) modal.style.display = 'none';
+        document.getElementById('extra-modal').style.display = 'none';
         currentItemIndex = null;
     }
 
     function removeFromCart(idx) {
         cart.splice(idx, 1);
         updateCart();
-        if(cart.length === 0) {
-            const deliveryModal = document.getElementById('delivery-modal');
-            if(deliveryModal) deliveryModal.style.display = 'none';
-        }
+        if(cart.length === 0) document.getElementById('delivery-modal').style.display='none';
     }
 
     function updateCart() {
-        const cartCountSpan = document.getElementById('cartCount');
-        const cartBtn = document.getElementById('cartBtn');
-        const cartItemsList = document.getElementById('cart-items-list');
-
-        if(cartCountSpan) cartCountSpan.innerText = cart.length;
-        if(cartBtn) cartBtn.style.display = cart.length > 0 ? 'block' : 'none';
-
+        document.getElementById('cartCount').innerText = cart.length;
+        document.getElementById('cartBtn').style.display = cart.length > 0 ? 'block' : 'none';
         let totalItemsPrice = 0;
-        if(cartItemsList) {
-            cartItemsList.innerHTML = cart.map((item, i) => {
-                let itemBasePrice = parsePrice(item.name);
-                let extrasPrice = item.extras.reduce((sum, ex) => sum + parsePrice(ex), 0);
-                totalItemsPrice += (itemBasePrice + extrasPrice);
-                let extrasHtml = item.extras.length > 0
-                    ? `<div style="font-size: 11px; color: #666; margin-left: 15px; font-style: italic;">${item.extras.join('<br>')}</div>`
-                    : '';
-                return `<div style="margin-bottom:10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-weight:700;">${i+1}. ${item.name}</span>
-                        <span style="color:red; cursor:pointer; padding: 0 10px;" onclick="removeFromCart(${i})">✕</span>
-                    </div>${extrasHtml}</div>`;
-            }).join('') + `<div style="text-align:right; font-weight:700; margin-top:10px;">Товары: ${totalItemsPrice}₽</div>`;
-            cartItemsList.dataset.total = totalItemsPrice;
-        }
+        document.getElementById('cart-items-list').innerHTML = cart.map((item, i) => {
+            let itemBasePrice = parsePrice(item.name);
+            let extrasPrice = item.extras.reduce((sum, ex) => sum + parsePrice(ex), 0);
+            totalItemsPrice += (itemBasePrice + extrasPrice);
+            let extrasHtml = item.extras.length > 0 
+                ? `<div style="font-size: 11px; color: #666; margin-left: 15px; font-style: italic;">${item.extras.join('<br>')}</div>` 
+                : '';
+            return `<div style="margin-bottom:10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-weight:700;">${i+1}. ${item.name}</span> 
+                    <span style="color:red; cursor:pointer; padding: 0 10px;" onclick="removeFromCart(${i})">✕</span>
+                </div>${extrasHtml}</div>`;
+        }).join('') + `<div style="text-align:right; font-weight:700; margin-top:10px;">Товары: ${totalItemsPrice}₽</div>`;
+        document.getElementById('cart-items-list').dataset.total = totalItemsPrice;
     }
 
-    function openDeliveryModal() {
-        const modal = document.getElementById('delivery-modal');
-        if(modal) modal.style.display = 'flex';
-    }
+    function openDeliveryModal() { document.getElementById('delivery-modal').style.display = 'flex'; }
 
     function setMethod(method) {
         orderMethod = method;
@@ -806,62 +794,47 @@
         const btnDelivery = document.getElementById('method-delivery');
         const timeLabel = document.getElementById('time-label');
 
-        if(deliveryFields) {
-            if (method === 'delivery') {
-                deliveryFields.style.display = 'block';
-                if(btnDelivery) btnDelivery.classList.add('active');
-                if(btnPickup) btnPickup.classList.remove('active');
-                if(timeLabel) timeLabel.innerText = "ВРЕМЯ ДОСТАВКИ";
-            } else {
-                deliveryFields.style.display = 'none';
-                if(btnPickup) btnPickup.classList.add('active');
-                if(btnDelivery) btnDelivery.classList.remove('active');
-                if(timeLabel) timeLabel.innerText = "КОГДА ПОДГОТОВИТЬ? (ВРЕМЯ)";
-                const deliveryPriceSpan = document.getElementById('deliveryPriceDisplay');
-                if(deliveryPriceSpan) deliveryPriceSpan.innerText = '0';
-            }
+        if (method === 'delivery') {
+            deliveryFields.style.display = 'block';
+            btnDelivery.classList.add('active');
+            btnPickup.classList.remove('active');
+            timeLabel.innerText = "ВРЕМЯ ДОСТАВКИ";
+        } else {
+            deliveryFields.style.display = 'none';
+            btnPickup.classList.add('active');
+            btnDelivery.classList.remove('active');
+            timeLabel.innerText = "КОГДА ПОДГОТОВИТЬ? (ВРЕМЯ)";
+            document.getElementById('deliveryPriceDisplay').innerText = '0';
         }
     }
 
     function setPayment(method) {
         paymentMethod = method;
-        const payCash = document.getElementById('pay-cash');
-        const payTransfer = document.getElementById('pay-transfer');
-        if(payCash) payCash.classList.toggle('active', method === 'Наличные');
-        if(payTransfer) payTransfer.classList.toggle('active', method === 'Перевод');
+        document.getElementById('pay-cash').classList.toggle('active', method === 'Наличные');
+        document.getElementById('pay-transfer').classList.toggle('active', method === 'Перевод');
     }
 
     function selectZone(zone, price) {
         selectedZone = zone;
         zonePrice = price;
-        ['opt-nartkala', 'opt-kahun', 'opt-nalchik'].forEach(id => {
-            const el = document.getElementById(id);
-            if(el) el.className = 'delivery-option';
-        });
-        const zoneId = zone === 'Нарткала' ? 'nartkala' : zone === 'Кахун' ? 'kahun' : 'nalchik';
-        const activeZone = document.getElementById('opt-' + zoneId);
-        if(activeZone) activeZone.className = 'delivery-option active';
+        ['opt-nartkala', 'opt-kahun', 'opt-nalchik'].forEach(id => document.getElementById(id).className = 'delivery-option');
+        document.getElementById('opt-' + (zone === 'Нарткала' ? 'nartkala' : zone === 'Кахун' ? 'kahun' : 'nalchik')).className = 'delivery-option active';
         updateDeliveryPrice();
     }
 
     function updateDeliveryPrice() {
         if (orderMethod === 'delivery') {
-            const floorCheck = document.getElementById('floorCheck');
-            let total = zonePrice + (floorCheck && floorCheck.checked ? 50 : 0);
-            const deliverySpan = document.getElementById('deliveryPriceDisplay');
-            if(deliverySpan) deliverySpan.innerText = total;
+            let total = zonePrice + (document.getElementById('floorCheck').checked ? 50 : 0);
+            document.getElementById('deliveryPriceDisplay').innerText = total;
         }
     }
 
     function sendToWhatsApp() {
-        const time = document.getElementById('orderTime')?.value;
-        const phone = document.getElementById('userPhone')?.value;
-        if (!time || !phone) {
-            alert('Пожалуйста, укажите время и телефон!');
-            return;
-        }
+        const time = document.getElementById('orderTime').value;
+        const phone = document.getElementById('userPhone').value;
+        if (!time || !phone) { alert('Пожалуйста, укажите время и телефон!'); return; }
 
-        const dessertKeywords = ['Тарт', 'Гранат', 'Круассан', 'Бенто', 'Анна', 'Blue Velvet', 'Green Apple', 'Melon Breeze', 'Strawberry Sakura'];
+        const dessertKeywords = ['Тарт', 'Гранат', 'Круассан', 'Бенто', 'Анна'];
         let dessertCount = cart.filter(item => dessertKeywords.some(key => item.name.includes(key))).length;
         let packagingPrice = 0;
         if (dessertCount > 0) {
@@ -876,17 +849,14 @@
             return base + ex;
         }).join('\n');
 
-        let totalGoods = parseInt(document.getElementById('cart-items-list')?.dataset.total || 0);
-        let deliveryPrice = orderMethod === 'delivery' ? parseInt(document.getElementById('deliveryPriceDisplay')?.innerText || 0) : 0;
+        let totalGoods = parseInt(document.getElementById('cart-items-list').dataset.total || 0);
+        let deliveryPrice = orderMethod === 'delivery' ? parseInt(document.getElementById('deliveryPriceDisplay').innerText) : 0;
         let finalSum = totalGoods + deliveryPrice + packagingPrice;
 
         let details = "";
         if (orderMethod === 'delivery') {
-            const address = document.getElementById('userAddress')?.value;
-            if (!address || !selectedZone) {
-                alert('Заполните данные доставки!');
-                return;
-            }
+            const address = document.getElementById('userAddress').value;
+            if (!address || !selectedZone) { alert('Заполните данные доставки!'); return; }
             details = `\n📍 Доставка: ${selectedZone}, ${address}\n🚚 Цена доставки: ${deliveryPrice}₽`;
         } else {
             details = `\n🏃 Получение: Самовывоз / В зале`;
@@ -901,6 +871,20 @@
         if(img) img.style.transform = `rotate(-5deg) translateY(${window.scrollY * 0.2}px)`;
     });
 </script>
+<footer style="text-align:center; padding:25px 0;">
+    <span style="
+        font-family: 'Cormorant', serif;
+        font-size:15px;
+        color:#ffffff;
+        font-style: italic;
+        font-weight: 600;
+        letter-spacing:0.5px;
+        opacity:0.9;
+    ">
+        made by SALINA
+    </span>
+</footer>
 
 </body>
 </html>
+
