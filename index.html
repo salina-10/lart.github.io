@@ -450,15 +450,7 @@
             <div class="delivery-option" id="opt-nartkala" onclick="selectZone('Морзох', 200)">Морзох (200₽)</div>
             <div class="delivery-option" id="opt-kahun" onclick="selectZone('Псынабо', 300)">Псынабо (300₽)</div>
             <div class="delivery-option" id="opt-nalchik" onclick="selectZone('Псыкод', 600)">Псыкод (600₽)</div>
-                                <div style="margin-top: 12px; padding-top: 8px; border-top: 1px dashed #ddd;">
-                        <label style="font-size: 13px; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="customCityCheck" onchange="toggleCustomCity()"> 
-                            <span>📝 Если вашего города нет в списке</span>
-                        </label>
-                        <input type="text" id="customCityInput" placeholder="Напишите название вашего города" style="display: none; width: 100%; margin-top: 8px; padding: 8px; border-radius: 20px; border: 1px solid #ccc;">
-                        <div id="customCityMessage" style="font-size: 11px; color: #e67e22; margin-top: 5px; display: none;">✅ Доставка будет рассчитана отдельно</div>
-                    </div>
-
+            <div class="delivery-option" id="opt-nalchik" onclick="selectZone('Если вашего города нет в списке Доставка будет рассчитана отдельно', )">Если вашего города нет в списке Доставка будет рассчитана отдельно (0₽)</div>
             <div style="text-align: left; margin: 10px 0;"><label style="font-size: 13px;"><input type="checkbox" id="floorCheck" onchange="updateDeliveryPrice()"> Этаж выше 2-го (+50₽)</label></div>
             <div style="font-weight: 700; font-size: 18px; margin: 15px 0; text-align: center;">Доставка: <span id="deliveryPriceDisplay">0</span> ₽</div>
         </div>
