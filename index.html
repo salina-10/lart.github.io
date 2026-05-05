@@ -834,7 +834,7 @@
         if(payTransfer) payTransfer.classList.toggle('active', method === 'Перевод');
     }
 
-   function selectZone(zone, price) {
+    function selectZone(zone, price) {
     selectedZone = zone;
     zonePrice = price;
     
@@ -879,6 +879,7 @@
     // Обновляем цену доставки
     updateDeliveryPrice();
     }
+
     function updateDeliveryPrice() {
         if (orderMethod === 'delivery') {
             const floorCheck = document.getElementById('floorCheck');
