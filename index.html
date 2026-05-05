@@ -446,10 +446,10 @@
             <label style="display: block; font-size: 11px; font-weight: 700; text-align: left; color: var(--matcha-deep);">ЗОНА ДОСТАВКИ</label>
             <div class="delivery-option" id="opt-nartkala" onclick="selectZone('Нарткала', 150)">Нарткала (150₽)</div>
             <div class="delivery-option" id="opt-kahun" onclick="selectZone('Кахун', 200)">Кахун (200₽)</div>
-            <div class="delivery-option" id="opt-nalchik" onclick="selectZone('Нальчик', 350)">Нальчик (900-1000₽)</div>
-            <div class="delivery-option" id="opt-nartkala" onclick="selectZone('Нарткала', 150)">Нарткала (150₽)</div>
-            <div class="delivery-option" id="opt-kahun" onclick="selectZone('Кахун', 200)">Кахун (200₽)</div>
-            <div class="delivery-option" id="opt-nalchik" onclick="selectZone('Нальчик', 350)">Нальчик (350₽)</div>
+            <div class="delivery-option" id="opt-mohzoh" onclick="selectZone('Морзох', 200)">Морзох (200₽)</div>
+            <div class="delivery-option" id="opt-psnabo" onclick="selectZone('Псынабо', 300)">Псынабо (300₽)</div>
+            <div class="delivery-option" id="opt-blackriver" onclick="selectZone('Черная речка', 300)">Черная речка (300₽)</div>
+            <div class="delivery-option" id="opt-nalchik" onclick="selectZone('Нальчик', 1000)">Нальчик (1000₽)</div>
             <div style="text-align: left; margin: 10px 0;"><label style="font-size: 13px;"><input type="checkbox" id="floorCheck" onchange="updateDeliveryPrice()"> Этаж выше 2-го (+50₽)</label></div>
             <div style="font-weight: 700; font-size: 18px; margin: 15px 0; text-align: center;">Доставка: <span id="deliveryPriceDisplay">0</span> ₽</div>
         </div>
@@ -834,19 +834,51 @@
         if(payTransfer) payTransfer.classList.toggle('active', method === 'Перевод');
     }
 
-    function selectZone(zone, price) {
-        selectedZone = zone;
-        zonePrice = price;
-        ['opt-nartkala', 'opt-kahun', 'opt-nalchik'].forEach(id => {
-            const el = document.getElementById(id);
-            if(el) el.className = 'delivery-option';
-        });
-        const zoneId = zone === 'Нарткала' ? 'nartkala' : zone === 'Кахун' ? 'kahun' : 'nalchik';
-        const activeZone = document.getElementById('opt-' + zoneId);
-        if(activeZone) activeZone.className = 'delivery-option active';
-        updateDeliveryPrice();
+   function selectZone(zone, price) {
+    selectedZone = zone;
+    zonePrice = price;
+    
+    // Список всех ID опций доставки
+    const allZoneIds = ['opt-nartkala', 'opt-kahun', 'opt-nalchik', 'opt-mohzoh', 'opt-psnabo', 'opt-blackriver'];
+    
+    // Убираем активный класс со всех зон
+    allZoneIds.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.className = 'delivery-option';
+    });
+    
+    // Определяем ID активной зоны по названию
+    let activeZoneId = '';
+    switch(zone) {
+        case 'Нарткала':
+            activeZoneId = 'opt-nartkala';
+            break;
+        case 'Кахун':
+            activeZoneId = 'opt-kahun';
+            break;
+        case 'Нальчик':
+            activeZoneId = 'opt-nalchik';
+            break;
+        case 'Морзох':
+            activeZoneId = 'opt-mohzoh';
+            break;
+        case 'Псынабо':
+            activeZoneId = 'opt-psnabo';
+            break;
+        case 'Черная речка':
+            activeZoneId = 'opt-blackriver';
+            break;
+        default:
+            activeZoneId = '';
     }
-
+    
+    // Добавляем активный класс выбранной зоне
+    const activeZone = document.getElementById(activeZoneId);
+    if(activeZone) activeZone.className = 'delivery-option active';
+    
+    // Обновляем цену доставки
+    updateDeliveryPrice();
+    }
     function updateDeliveryPrice() {
         if (orderMethod === 'delivery') {
             const floorCheck = document.getElementById('floorCheck');
