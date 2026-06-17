@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +12,7 @@
     <style>
         :root {
             --sakura-soft: #dcafa2;
-            --sakura-accent: #ecd9dc;
+            --sakura-accent: #d9ece6;
             --matcha-vibrant: #5f7669;
             --matcha-deep: #606d4a;
             --text-main: #1A1A1A;
@@ -179,7 +180,7 @@
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(40px, 8vw, 100px);
-            color: white;
+            color: rgb(255, 255, 255);
             margin: 0;
         }
 
@@ -308,7 +309,6 @@
         }
 
         .award-badge img { height: 35px; margin-right: 15px; }
-
         .reviews-grid {
             display: flex;
             gap: 20px;
@@ -332,7 +332,7 @@
 
         footer { padding: 40px; text-align: center; color: white; font-size: 12px; }
 
-        /* МОБИЛЬНАЯ ВЕРСИЯ */
+       
         @media (max-width: 768px) {
             body {
                 padding-bottom: 100px;
@@ -396,6 +396,99 @@
             .hero-image-wrap {
                 width: 250px;
                 height: 320px;
+            }
+        }
+
+        /* ========== ДОБАВЛЕНО: ФИКС ЛЕТАЮЩИХ ЦЕН И СЧЁТЧИК ========== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .btn-plus-card {
+            margin-top: auto;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #606d4a;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 120px;
+            margin-top: auto;
+            transition: all 0.2s ease;
+        }
+
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .quantity-count {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .btn-plus-card.hidden {
+            display: none;
+        }
+
+        .quantity-control {
+            animation: fadeInScale 0.2s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quantity-control {
+                max-width: 100px;
+            }
+            .quantity-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 16px;
+            }
+            .quantity-count {
+                font-size: 13px;
+                min-width: 24px;
             }
         }
     </style>
@@ -462,7 +555,7 @@
             <div class="delivery-option" id="pay-transfer" style="flex: 1; margin: 0;" onclick="setPayment('Перевод')">Перевод</div>
         </div>
 
-        <button style="padding: 15px 30px; border-radius: 40px; font-weight: 700; cursor: pointer !important; background: #25D366; color: white; border: none; width: 100%; margin-top: 10px;" onclick="sendToWhatsApp()">ПОДТВЕРДИТЬ В WHATSAPP</button>
+        <button style="padding: 15px 30px; border-radius: 40px; font-weight: 700; cursor: pointer !important; background: #25D366; color: rgb(81, 59, 59); border: none; width: 100%; margin-top: 10px;" onclick="sendToWhatsApp()">ПОДТВЕРДИТЬ В WHATSAPP</button>
     </div>
 </div>
 
@@ -474,38 +567,38 @@
 <section class="hero">
     <div class="hero-image-wrap" id="parallax-img"><img src="IMG_4615.jpg" alt="Hero"></div>
     <div class="hero-content" data-aos="zoom-out">
-        <p style="color: white; letter-spacing: 5px; font-size: 12px;">EST. 2024</p>
+        <p style="color: rgb(255, 255, 255); letter-spacing: 5px; font-size: 12px;">EST. 2024</p>
         <h1>Сладость <br>как <i>Искусство</i></h1>
-        <div style="margin-top: 20px;"><a href="#vitrina" style="padding: 15px 30px; border-radius: 40px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer !important; background: var(--sakura-soft); color: white;">ВИТРИНА</a></div>
+        <div style="margin-top: 20px;"><a href="#vitrina" style="padding: 15px 30px; border-radius: 40px; text-decoration: none; font-weight: 700; display: inline-block; cursor: pointer !important; background: var(--sakura-soft); color: rgb(255, 255, 255);">ВИТРИНА</a></div>
     </div>
 </section>
 
 <section id="vitrina">
-    <div style="text-align: center; padding: 80px 5% 40px; color: white;" data-aos="fade-up">
+    <div style="text-align: center; padding: 80px 5% 40px; color: rgb(255, 255, 255);" data-aos="fade-up">
         <h2>Витрина десертов</h2>
         <p></p>
     </div>
     <div class="products-grid">
-    <div class="product-card" id="item1" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4619.jpg" alt="Тарт"><h3>Тарт Голубика-Малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Голубика-Малина (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item1')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item2" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4639.jpg" alt="Тарт"><h3>Тарт Фисташка-малина-брауни</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фисташка-малина-брауни (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item2')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item3" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4642.jpg" alt="Тарт"><h3>Тарт Фундук-карамель-персик</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фундук-карамель-персик (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item3')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item4" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4640.jpg" alt="Тарт"><h3>Тарт Сникерс</h3><button class="btn-plus-card" onclick="addToCart('Тарт Сникерс (290₽)', event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item4')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item5" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4641.jpg" alt="Тарт"><h3>Тарт Лимон-вишня</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня (290₽)', event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item5')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item6" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-03.jpg" alt="Тарт"><h3>Тарт Груша-миндаль</h3><button class="btn-plus-card" onclick="addToCart('Тарт Груша-миндаль (290₽)', event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item6')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item7" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-51-46.jpg" alt="Тарт"><h3>Тарт Клубника-мак</h3><button class="btn-plus-card" onclick="addToCart('Тарт Клубника-мак (290₽)', event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item7')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item8" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4644.jpg" alt="Тарт"><h3>Тарт Карамель-орех-шоколад</h3><button class="btn-plus-card" onclick="addToCart('Тарт Карамель-орех-шоколад (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item8')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item9" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4646.jpg" alt="Тарт"><h3>Тарт Миди банан</h3><button class="btn-plus-card" onclick="addToCart('Тарт Миди банан (420₽)', event)">420₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item9')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item10" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-10 01.08.37.jpeg" alt="Тарт"><h3>Тарт Лимон-итальянская меренга</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-итальянская меренга (290₽)', event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item10')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item11" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-10 01.08.59.jpeg" alt="Тарт"><h3>Тарт Дубайский</h3><button class="btn-plus-card" onclick="addToCart('Тарт Дубайский (310₽)', event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item11')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item12" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-07.jpg" alt="Блонди"><h3>Блонди</h3><button class="btn-plus-card" onclick="addToCart('Блонди (190₽)', event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item12')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item13" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-05.jpg" alt="Сан-Себастьян"><h3>Сан-Себастьян Классик</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Классик (270₽)', event)">270₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item13')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item14" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-02.jpg" alt="Сан-Себастьян"><h3>Сан-Себастьян Фисташка</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Фисташка (300₽)', event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item14')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item15" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4620%2013.55.03.jpg" alt="Гранат"><h3>Гранат в шоколаде</h3><button class="btn-plus-card" onclick="addToCart('Гранат в шоколаде (190₽)', event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item15')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item16" data-aos="fade-up"><div class="status-badge bakery">Выпечка</div><img src="photo_2026-04-10 01.09.06.jpeg" alt="Круассан"><h3>Круассан с шоколадом</h3><button class="btn-plus-card" onclick="addToCart('Круассан с шоколадом (190₽)', event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item16')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item17" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="IMG_4621.jpg" alt="Бенто"><h3>Бенто-Торт Медовик</h3><button class="btn-plus-card" onclick="addToCart('Бенто Медовик (420₽)', event)">420₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item17')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item18" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="IMG_4638.jpg" alt="Анна Павлова"><h3>Анна Павлова</h3><button class="btn-plus-card" onclick="addToCart('Анна Павлова (300₽)', event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item18')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item19" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="photo_2026-04-12_16-52-11.jpg" alt="Тирамису"><h3>Тирамису</h3><button class="btn-plus-card" onclick="addToCart('Тирамису (300₽)', event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item19')">Изменить наличие</button></div></div>
-    <div class="product-card" id="item20" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="photo_2026-04-12_16-52-01.jpg" alt="Профитроли"><h3>Профитроли</h3><button class="btn-plus-card" onclick="addToCart('Профитроли (190₽)', event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item20')">Изменить наличие</button></div></div>
+            <div class="product-card" id="item1" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4619.jpg" alt="Тарт"><h3>Тарт Голубика-Малина</h3><button class="btn-plus-card" onclick="addToCart('Тарт Голубика-Малина', 310, event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item1')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item2" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4639.jpg" alt="Тарт"><h3>Тарт Фисташка-малина-брауни</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фисташка-малина-брауни', 310, event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item2')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item3" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4642.jpg" alt="Тарт"><h3>Тарт Фундук-карамель-персик</h3><button class="btn-plus-card" onclick="addToCart('Тарт Фундук-карамель-персик', 310, event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item3')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item4" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4640.jpg" alt="Тарт"><h3>Тарт Сникерс</h3><button class="btn-plus-card" onclick="addToCart('Тарт Сникерс', 290, event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item4')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item5" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4641.jpg" alt="Тарт"><h3>Тарт Лимон-вишня</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-вишня', 290, event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item5')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item6" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-03.jpg" alt="Тарт"><h3>Тарт Груша-миндаль</h3><button class="btn-plus-card" onclick="addToCart('Тарт Груша-миндаль', 290, event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item6')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item7" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-51-46.jpg" alt="Тарт"><h3>Тарт Клубника-мак</h3><button class="btn-plus-card" onclick="addToCart('Тарт Клубника-мак', 290, event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item7')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item8" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4644.jpg" alt="Тарт"><h3>Тарт Карамель-орех-шоколад</h3><button class="btn-plus-card" onclick="addToCart('Тарт Карамель-орех-шоколад', 310, event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item8')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item9" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4646.jpg" alt="Тарт"><h3>Тарт Миди банан</h3><button class="btn-plus-card" onclick="addToCart('Тарт Миди банан', 420, event)">420₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item9')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item10" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-10 01.08.37.jpeg" alt="Тарт"><h3>Тарт Лимон-итальянская меренга</h3><button class="btn-plus-card" onclick="addToCart('Тарт Лимон-итальянская меренга', 290, event)">290₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item10')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item11" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-10 01.08.59.jpeg" alt="Тарт"><h3>Тарт Дубайский</h3><button class="btn-plus-card" onclick="addToCart('Тарт Дубайский', 310, event)">310₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item11')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item12" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-07.jpg" alt="Блонди"><h3>Блонди</h3><button class="btn-plus-card" onclick="addToCart('Блонди', 190, event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item12')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item13" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-05.jpg" alt="Сан-Себастьян"><h3>Сан-Себастьян Классик</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Классик', 270, event)">270₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item13')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item14" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="photo_2026-04-12_16-52-02.jpg" alt="Сан-Себастьян"><h3>Сан-Себастьян Фисташка</h3><button class="btn-plus-card" onclick="addToCart('Сан-Себастьян Фисташка', 300, event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item14')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item15" data-aos="fade-up"><div class="status-badge in-stock">В наличии</div><img src="IMG_4620%2013.55.03.jpg" alt="Гранат"><h3>Гранат в шоколаде</h3><button class="btn-plus-card" onclick="addToCart('Гранат в шоколаде', 190, event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item15')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item16" data-aos="fade-up"><div class="status-badge bakery">Выпечка</div><img src="photo_2026-04-10 01.09.06.jpeg" alt="Круассан"><h3>Круассан с шоколадом</h3><button class="btn-plus-card" onclick="addToCart('Круассан с шоколадом', 190, event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item16')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item17" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="IMG_4621.jpg" alt="Бенто"><h3>Бенто-Торт Медовик</h3><button class="btn-plus-card" onclick="addToCart('Бенто-Торт Медовик', 420, event)">420₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item17')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item18" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="IMG_4638.jpg" alt="Анна Павлова"><h3>Анна Павлова</h3><button class="btn-plus-card" onclick="addToCart('Анна Павлова', 300, event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item18')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item19" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="photo_2026-04-12_16-52-11.jpg" alt="Тирамису"><h3>Тирамису</h3><button class="btn-plus-card" onclick="addToCart('Тирамису', 300, event)">300₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item19')">Изменить наличие</button></div></div>
+    <div class="product-card" id="item20" data-aos="fade-up"><div class="status-badge pre-order">Под заказ</div><img src="photo_2026-04-12_16-52-01.jpg" alt="Профитроли"><h3>Профитроли</h3><button class="btn-plus-card" onclick="addToCart('Профитроли', 190, event)">190₽</button><div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item20')">Изменить наличие</button></div></div>
 </div>
 </div>
 </section>
@@ -586,9 +679,7 @@
         </div>
         </div>
     </div>
-<!-- ВОТ ТУДА (перед menu-section) -->
 
-<!-- ДЕКОРАТИВНАЯ НАДПИСЬ НАД МЕНЮ НАПИТКОВ -->
 <div style="text-align: center; margin: 40px auto 20px auto;" data-aos="fade-up">
     <div style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; font-style: italic; color: #b0988a; letter-spacing: 3px; display: flex; align-items: center; justify-content: center; gap: 15px;">
         <span style="font-size: 20px;">✨</span>
@@ -603,7 +694,7 @@
         <div class="status-badge in-stock">В наличии</div>
         <img src="WhatsApp Image 2026-04-28 at 11.53.29.jpeg" alt="Голубой бархат">
         <h3>Голубой бархат</h3>
-        <button class="btn-plus-card" onclick="addToCart('Blue Velvet Cream (250₽)', event)">250₽</button>
+        <button class="btn-plus-card" onclick="addToCart('Голубой бархат', 250, event)">250₽</button>
         <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item21')">Изменить наличие</button></div>
     </div>
 
@@ -611,7 +702,7 @@
         <div class="status-badge in-stock">В наличии</div>
         <img src="WhatsApp Image 2026-04-28 at 11.35.53 (1).jpeg" alt="Яблочное облако">
         <h3>Яблочное облако</h3>
-        <button class="btn-plus-card" onclick="addToCart('Green Apple Cloud (250₽)', event)">250₽</button>
+        <button class="btn-plus-card" onclick="addToCart('Яблочное облако', 250, event)">250₽</button>
         <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item22')">Изменить наличие</button></div>
     </div>
 
@@ -619,7 +710,7 @@
         <div class="status-badge in-stock">В наличии</div>
         <img src="WhatsApp Image 2026-04-28 at 11.42.24.jpeg" alt="Дынный бриз">
         <h3>Дынный бриз</h3>
-        <button class="btn-plus-card" onclick="addToCart('Melon Breeze Cream (250₽)', event)">250₽</button>
+        <button class="btn-plus-card" onclick="addToCart('Дынный бриз', 250, event)">250₽</button>
         <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item23')">Изменить наличие</button></div>
     </div>
 
@@ -627,12 +718,11 @@
         <div class="status-badge in-stock">В наличии</div>
         <img src="WhatsApp Image 2026-04-28 at 11.35.53.jpeg" alt="Клубнично крем">
         <h3>Клубнично крем </h3>
-        <button class="btn-plus-card" onclick="addToCart('Strawberry Sakura Cream (250₽)', event)">250₽</button>
+        <button class="btn-plus-card" onclick="addToCart('Клубнично крем', 250, event)">250₽</button>
         <div class="admin-controls"><button class="stock-toggle-btn" onclick="toggleStock('item24')">Изменить наличие</button></div>
     </div>
 </div>
 </section>
-
 <section class="map-section" data-aos="fade-up">
     <h2 style="font-family: 'Playfair Display'; color: var(--matcha-deep);">Ждем вас в гости</h2>
     <p style="font-size: 14px; margin-bottom: 10px;">Нарткала, ул. Кандохова, 130</p>
@@ -748,8 +838,120 @@
         return match ? parseInt(match[1]) : 0;
     }
 
-    // ИСПРАВЛЕННАЯ ФУНКЦИЯ addToCart
-    function addToCart(itemName, event) {
+    // ========== СЧЁТЧИК КОЛИЧЕСТВА ДЛЯ ДЕСЕРТОВ ==========
+    const cartItemsCount = {};
+
+    function createQuantityControl(productId, productName, price, originalButton) {
+        const control = document.createElement('div');
+        control.className = 'quantity-control';
+        
+        const minusBtn = document.createElement('button');
+        minusBtn.className = 'quantity-btn';
+        minusBtn.textContent = '-';
+        minusBtn.onclick = (e) => {
+            e.stopPropagation();
+            updateQuantityForProduct(productId, productName, price, -1, control, originalButton);
+        };
+        
+        const countSpan = document.createElement('span');
+        countSpan.className = 'quantity-count';
+        countSpan.textContent = '1';
+        
+        const plusBtn = document.createElement('button');
+        plusBtn.className = 'quantity-btn';
+        plusBtn.textContent = '+';
+        plusBtn.onclick = (e) => {
+            e.stopPropagation();
+            updateQuantityForProduct(productId, productName, price, 1, control, originalButton);
+        };
+        
+        control.appendChild(minusBtn);
+        control.appendChild(countSpan);
+        control.appendChild(plusBtn);
+        
+        return control;
+    }
+
+    function updateQuantityForProduct(productId, productName, price, delta, control, originalButton) {
+        if (!cartItemsCount[productId]) {
+            cartItemsCount[productId] = 0;
+        }
+        
+        const newQuantity = cartItemsCount[productId] + delta;
+        
+        if (newQuantity <= 0) {
+            delete cartItemsCount[productId];
+            control.remove();
+            originalButton.classList.remove('hidden');
+            
+            // Удаляем товар из корзины полностью
+            const cartIndex = cart.findIndex(item => item.productId === productId);
+            if (cartIndex !== -1) {
+                cart.splice(cartIndex, 1);
+                updateCart();
+            }
+        } else {
+            cartItemsCount[productId] = newQuantity;
+            const countSpan = control.querySelector('.quantity-count');
+            countSpan.textContent = newQuantity;
+            
+            // Обновляем или добавляем товар в корзину
+            const cartIndex = cart.findIndex(item => item.productId === productId);
+            const itemNameWithPrice = `${productName} (${price}₽)`;
+            if (cartIndex !== -1) {
+                cart[cartIndex] = { name: itemNameWithPrice, extras: [], productId: productId };
+            } else {
+                cart.push({ name: itemNameWithPrice, extras: [], productId: productId });
+            }
+            updateCart();
+        }
+    }
+
+    // Функция для десертов (с счётчиком)
+    function addDessertToCart(productName, price, event) {
+        const button = event.currentTarget;
+        const productCard = button.closest('.product-card');
+        if (!productCard) return;
+        
+        if (productCard.classList.contains('out-of-stock')) {
+            alert("Этот товар временно недоступен");
+            return;
+        }
+        
+        const productId = productCard.id;
+        
+        if (!cartItemsCount[productId]) {
+            cartItemsCount[productId] = 0;
+        }
+        cartItemsCount[productId]++;
+        
+        // Проверяем, есть ли уже контрол количества на этой карточке
+        const existingControl = productCard.querySelector('.quantity-control');
+        if (!existingControl) {
+            const quantityControl = createQuantityControl(productId, productName, price, button);
+            button.classList.add('hidden');
+            button.parentNode.insertBefore(quantityControl, button.nextSibling);
+            const countSpan = quantityControl.querySelector('.quantity-count');
+            countSpan.textContent = cartItemsCount[productId];
+        } else {
+            // Обновляем счётчик в существующем контроле
+            const countSpan = existingControl.querySelector('.quantity-count');
+            countSpan.textContent = cartItemsCount[productId];
+        }
+        
+        // Добавляем или обновляем в корзине
+        const cartIndex = cart.findIndex(item => item.productId === productId);
+        const itemNameWithPrice = `${productName} (${price}₽)`;
+        if (cartIndex !== -1) {
+            cart[cartIndex] = { name: itemNameWithPrice, extras: [], productId: productId };
+        } else {
+            cart.push({ name: itemNameWithPrice, extras: [], productId: productId });
+        }
+        updateCart();
+    }
+
+    // Функция для напитков (со старым поведением, с модалкой добавок)
+    function addDrinkToCart(itemName, event) {
         const card = event?.target?.closest('.product-card');
         if(card && card.classList.contains('out-of-stock')) {
             alert("Этот товар временно недоступен");
@@ -758,12 +960,22 @@
 
         cart.push({ name: itemName, extras: [] });
         currentItemIndex = cart.length - 1;
-
-        const isDrink = event?.target?.closest('.menu-section') !== null;
-        if (isDrink) {
-            openExtraModal(itemName);
-        }
+        
+        // Открываем модалку с добавками
+        openExtraModal(itemName);
         updateCart();
+    }
+
+    // ГЛАВНАЯ ФУНКЦИЯ addToCart - определяет, десерт это или напиток
+    function addToCart(itemName, priceOrEvent, eventArg) {
+        // Если второй параметр — число (цена), значит это десерт
+        if (typeof priceOrEvent === 'number') {
+            addDessertToCart(itemName, priceOrEvent, eventArg);
+            return;
+        }
+        
+        // Иначе это напиток (цена внутри itemName)
+        addDrinkToCart(itemName, priceOrEvent);
     }
 
     function openExtraModal(name) {
@@ -789,6 +1001,21 @@
     }
 
     function removeFromCart(idx) {
+        const removedItem = cart[idx];
+        if (removedItem && removedItem.productId) {
+            // Полностью удаляем количество из счётчика
+            delete cartItemsCount[removedItem.productId];
+            // Возвращаем кнопку обратно
+            const productCard = document.getElementById(removedItem.productId);
+            if (productCard) {
+                const button = productCard.querySelector('.btn-plus-card');
+                const quantityControl = productCard.querySelector('.quantity-control');
+                if (button && quantityControl) {
+                    quantityControl.remove();
+                    button.classList.remove('hidden');
+                }
+            }
+        }
         cart.splice(idx, 1);
         updateCart();
         if(cart.length === 0) {
@@ -802,21 +1029,36 @@
         const cartBtn = document.getElementById('cartBtn');
         const cartItemsList = document.getElementById('cart-items-list');
 
-        if(cartCountSpan) cartCountSpan.innerText = cart.length;
+        // Подсчитываем ОБЩЕЕ количество товаров (складываем все количества)
+        let totalItemsCount = 0;
+        for (let productId in cartItemsCount) {
+            totalItemsCount += cartItemsCount[productId];
+        }
+        // Добавляем напитки (у них нет productId, их считаем по одному)
+        const drinksCount = cart.filter(item => !item.productId).length;
+        totalItemsCount += drinksCount;
+        
+        if(cartCountSpan) cartCountSpan.innerText = totalItemsCount;
         if(cartBtn) cartBtn.style.display = cart.length > 0 ? 'block' : 'none';
-
+        
         let totalItemsPrice = 0;
         if(cartItemsList) {
             cartItemsList.innerHTML = cart.map((item, i) => {
                 let itemBasePrice = parsePrice(item.name);
                 let extrasPrice = item.extras.reduce((sum, ex) => sum + parsePrice(ex), 0);
-                totalItemsPrice += (itemBasePrice + extrasPrice);
+                let quantity = item.productId ? (cartItemsCount[item.productId] || 1) : 1;
+                let itemTotalPrice = (itemBasePrice + extrasPrice) * quantity;
+                totalItemsPrice += itemTotalPrice;
+                
                 let extrasHtml = item.extras.length > 0
                     ? `<div style="font-size: 11px; color: #666; margin-left: 15px; font-style: italic;">${item.extras.join('<br>')}</div>`
                     : '';
+                
+                let quantityDisplay = quantity > 1 ? `<span style="margin-left: 8px; font-size: 11px; color: #888;">x${quantity}</span>` : '';
+                
                 return `<div style="margin-bottom:10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-weight:700;">${i+1}. ${item.name}</span>
+                        <span style="font-weight:700;">${i+1}. ${item.name}${quantityDisplay}</span>
                         <span style="color:red; cursor:pointer; padding: 0 10px;" onclick="removeFromCart(${i})">✕</span>
                     </div>${extrasHtml}</div>`;
             }).join('') + `<div style="text-align:right; font-weight:700; margin-top:10px;">Товары: ${totalItemsPrice}₽</div>`;
@@ -862,49 +1104,44 @@
     }
 
     function selectZone(zone, price) {
-    selectedZone = zone;
-    zonePrice = price;
-    
-    // Список всех ID опций доставки
-    const allZoneIds = ['opt-nartkala', 'opt-kahun', 'opt-nalchik', 'opt-mohzoh', 'opt-psnabo', 'opt-blackriver'];
-    
-    // Убираем активный класс со всех зон
-    allZoneIds.forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.className = 'delivery-option';
-    });
-    
-    // Определяем ID активной зоны по названию
-    let activeZoneId = '';
-    switch(zone) {
-        case 'Нарткала':
-            activeZoneId = 'opt-nartkala';
-            break;
-        case 'Кахун':
-            activeZoneId = 'opt-kahun';
-            break;
-        case 'Нальчик':
-            activeZoneId = 'opt-nalchik';
-            break;
-        case 'Морзох':
-            activeZoneId = 'opt-mohzoh';
-            break;
-        case 'Псынабо':
-            activeZoneId = 'opt-psnabo';
-            break;
-        case 'Черная речка':
-            activeZoneId = 'opt-blackriver';
-            break;
-        default:
-            activeZoneId = '';
-    }
-    
-    // Добавляем активный класс выбранной зоне
-    const activeZone = document.getElementById(activeZoneId);
-    if(activeZone) activeZone.className = 'delivery-option active';
-    
-    // Обновляем цену доставки
-    updateDeliveryPrice();
+        selectedZone = zone;
+        zonePrice = price;
+        
+        const allZoneIds = ['opt-nartkala', 'opt-kahun', 'opt-nalchik', 'opt-mohzoh', 'opt-psnabo', 'opt-blackriver'];
+        
+        allZoneIds.forEach(id => {
+            const el = document.getElementById(id);
+            if(el) el.className = 'delivery-option';
+        });
+        
+        let activeZoneId = '';
+        switch(zone) {
+            case 'Нарткала':
+                activeZoneId = 'opt-nartkala';
+                break;
+            case 'Кахун':
+                activeZoneId = 'opt-kahun';
+                break;
+            case 'Нальчик':
+                activeZoneId = 'opt-nalchik';
+                break;
+            case 'Морзох':
+                activeZoneId = 'opt-mohzoh';
+                break;
+            case 'Псынабо':
+                activeZoneId = 'opt-psnabo';
+                break;
+            case 'Черная речка':
+                activeZoneId = 'opt-blackriver';
+                break;
+            default:
+                activeZoneId = '';
+        }
+        
+        const activeZone = document.getElementById(activeZoneId);
+        if(activeZone) activeZone.className = 'delivery-option active';
+        
+        updateDeliveryPrice();
     }
 
     function updateDeliveryPrice() {
@@ -924,8 +1161,12 @@
             return;
         }
 
-        const dessertKeywords = ['Тарт', 'Гранат', 'Круассан', 'Бенто', 'Анна', 'Blue Velvet', 'Green Apple', 'Melon Breeze', 'Strawberry Sakura'];
-        let dessertCount = cart.filter(item => dessertKeywords.some(key => item.name.includes(key))).length;
+        // Считаем общее количество десертов из cartItemsCount
+        let dessertCount = 0;
+        for (let productId in cartItemsCount) {
+            dessertCount += cartItemsCount[productId];
+        }
+        
         let packagingPrice = 0;
         if (dessertCount > 0) {
             if (dessertCount <= 4) packagingPrice = 40;
@@ -934,7 +1175,9 @@
         }
 
         let orderItemsText = cart.map((item, i) => {
-            let base = `${i+1}. ${item.name}`;
+            let quantity = item.productId ? (cartItemsCount[item.productId] || 1) : 1;
+            let quantityText = quantity > 1 ? ` x${quantity}` : '';
+            let base = `${i+1}. ${item.name}${quantityText}`;
             let ex = item.extras.length > 0 ? `\n   ${item.extras.join('\n   ')}` : '';
             return base + ex;
         }).join('\n');
